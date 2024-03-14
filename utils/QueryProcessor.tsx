@@ -12,7 +12,6 @@ export default function QueryProcessor(query: string): string {
     )
   };
   if (query.toLowerCase().includes("plus")) {
-    console.log("hi")
     let words = query.split(" ");
     let num1 = parseInt(words[2]);
     let num2 = parseInt(words[4].substring(0, words[4].length - 1));
@@ -29,6 +28,13 @@ export default function QueryProcessor(query: string): string {
     let num3Int = parseInt(num3.substring(0, num2.length - 1));
     let max = Math.max(num1Int, num2Int, num3Int);
     return max.toString();
+  }
+  if (query.toLowerCase().includes("multiplied by")) {
+    let words = query.split(" ");
+    let num1 = parseInt(words[2]);
+    let num2 = parseInt(words[5].substring(0, words[5].length - 1));
+    let sum = num1 * num2;
+    return sum.toString();
   }
   return "";
 }
