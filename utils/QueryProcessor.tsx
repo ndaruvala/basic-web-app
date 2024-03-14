@@ -11,26 +11,24 @@ export default function QueryProcessor(query: string): string {
       "Nader Daruvala"
     )
   };
-  if (query == "What is 14 plus 86?") {
-    return (
-      "100"
-    );
+  if (query.toLowerCase().includes("plus")) {
+    console.log("hi")
+    let words = query.split(" ");
+    let num1 = parseInt(words[2]);
+    let num2 = parseInt(words[4].substring(0, words[4].length - 1));
+    let sum = num1 + num2;
+    return sum.toString();
   };
-  if (query == "Which of the following numbers is the largest: 8, 76, 66?") {
-    return (
-      "76"
-    )
+  if (query.toLowerCase().includes("following numbers is the largest:")) {
+    let words = query.split(" ");
+    let num1 = words[8];
+    let num1Int = parseInt(num1.substring(0, num1.length - 1));
+    let num2 = words[9];
+    let num2Int = parseInt(num2.substring(0, num2.length - 1));
+    let num3 = words[10];
+    let num3Int = parseInt(num3.substring(0, num2.length - 1));
+    let max = Math.max(num1Int, num2Int, num3Int);
+    return max.toString();
   }
-  if (query == "Which of the following numbers is the largest: 94, 82, 62?") {
-    return (
-      "94"
-    )
-  }
-  if (query == "Which of the following numbers is the largest: 33, 14, 12?") {
-    return (
-      "33"
-    )
-  }
-
   return "";
 }
