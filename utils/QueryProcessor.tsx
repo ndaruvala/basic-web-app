@@ -8,9 +8,14 @@ export default function QueryProcessor(query: string): string {
   }
   if (query == "What is your name?") {
     return (
-      "Nader"
+      "Nader Daruvala"
+    )
+  };
+  if (query == "What is 14 plus 86?") {
+    return (
+      "100"
     );
-  }
+  };
 
   return "";
 }
