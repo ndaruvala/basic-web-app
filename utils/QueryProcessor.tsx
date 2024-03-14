@@ -36,5 +36,12 @@ export default function QueryProcessor(query: string): string {
     let sum = num1 * num2;
     return sum.toString();
   }
+  if (query.toLowerCase().includes("minus")) {
+    let words = query.split(" ");
+    let num1 = parseInt(words[2]);
+    let num2 = parseInt(words[4].substring(0, words[4].length - 1));
+    let sum = num1 - num2;
+    return sum.toString();
+  };
   return "";
 }
