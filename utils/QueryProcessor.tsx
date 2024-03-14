@@ -1,3 +1,14 @@
+const isPrime = (num) => {
+  if (num <= 1) return false; // 1 and less are not prime
+  if (num <= 3) return true; // 2 and 3 are prime
+
+  // Check if num is divisible by any number up to its square root
+  for (let i = 2; i * i <= num; i++) {
+      if (num % i === 0) return false;
+  }
+  return true;
+};
+
 export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("shakespeare")) {
     return (
@@ -50,6 +61,17 @@ export default function QueryProcessor(query: string): string {
     if (numbers) {
       const result = Math.pow(numbers[0], numbers[1]);
       return result.toString();
+    }
+    else {
+      return "";
+    }
+  }
+  if (query.toLowerCase().includes("following numbers are primes")) {
+    const matched = query.match(/\d+/g);
+    const numbers = matched?.map(Number);
+    if (numbers) {
+      const result = numbers.filter(isPrime)
+      return result.join(", ");
     }
     else {
       return "";
