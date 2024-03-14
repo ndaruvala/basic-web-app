@@ -43,5 +43,17 @@ export default function QueryProcessor(query: string): string {
     let sum = num1 - num2;
     return sum.toString();
   };
+  if (query.toLowerCase().includes("power of")) {
+
+    const matched = query.match(/\d+/g);
+    const numbers = matched?.map(Number);
+    if (numbers) {
+      const result = Math.pow(numbers[0], numbers[1]);
+      return result.toString();
+    }
+    else {
+      return "";
+    }
+  }
   return "";
 }
